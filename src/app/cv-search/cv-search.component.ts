@@ -22,8 +22,8 @@ export class CvSearchComponent implements OnInit {
   searchCognome(term:string): void{
     // this.searchTerms.next(term);
     this.cvs$= this.cvService.searchCognome(term);
-    this.listCv.cvs= this.cvs$;
-    this.router.navigateByUrl('/curriculum');
+    //this.listCv.cvs= this.cvs$;
+    //this.router.navigateByUrl('/curriculum');
     //this.location.go('/curriculum', '' , cvs =   )
     // this.listCv.cvs.includes.arguments.Observable<Cv[]> = this.cvService.searchCognome(term).pipe(
     //   this.cvs$.map()
