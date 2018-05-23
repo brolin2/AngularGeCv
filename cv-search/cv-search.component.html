@@ -1,0 +1,18 @@
+<div id="search-component">
+  <h2>Ricerca Curriculum</h2>
+  <div>
+    <h4>SearchChiava</h4>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+    <input #searchBox1 id="search-box1" >
+    <button id="btn_cerca_cognome" (click)="searchCognome(searchBox1.value)">CERCA!</button>    
+  </div>
+  <div>
+  </div>
+  <ul class="curriculum-list">
+    <li *ngFor="let cv of cvs$ | async">
+      <a routerLink="/detail/{{cv.id}}">
+        {{cv.nome}}
+      </a>
+    </li>
+  </ul>
+</div>

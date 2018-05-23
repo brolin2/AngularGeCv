@@ -1,0 +1,11 @@
+<h2>Aggiungi Curriculum</h2>
+<div>
+  <label>NOME : <input #nomeCv/> </label>
+  <label>COGNOME: <input #cognomeCv /> </label>
+  <label>Eta <input #etaCv  type="number"/> </label>
+  <button (click)="add(nomeCv.value , cognomeCv.value , etaCv.value)"   > ADD</button>
+  
+</div>
+
+
+<router-outlet></router-outlet>
