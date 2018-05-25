@@ -1,8 +1,11 @@
 
 
 <h2>I MIEI CURRICULUM</h2>
-<ul class="curriculum-list">
+_______________pazzo_______________
+<ul class="curriculum-list" *ngIf="cvs">
+  ciao
   <li *ngFor="let cv of cvs">
+    bau
     <a routerLink="/detail/{{cv.id}}"> 
       <span class="badge">{{cv.id}}</span>
       {{cv.nome}}

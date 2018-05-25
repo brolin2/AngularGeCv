@@ -5,17 +5,28 @@ import {HttpClient , HttpHeaders} from '@angular/common/http';
 import { Cv }  from './cv';
 import { MessageService } from './message.service';
 import { Esp } from './esp';
+import { GenService } from './gen.service';
+import { CvSerializer } from './cv-serializer';
 const httpOptions = {
 	headers: new HttpHeaders ( { 'Content-Type' : 'application/json'})
 };
 @Injectable({
   providedIn: 'root'
+  // providedIn: GenService
 })
-export class CvService {
-  private cvUrl= 'api/CVS';     // FA RIFERMIENTO AL FILE CONTENENTE I DATI!
-  
-  constructor( private http: HttpClient , private messageService: MessageService) { }
-  
+//export class CvService extends GenService<Cv> {
+export class CvService {  
+// private cvUrl= 'api';     // FA RIFERMIENTO AL FILE CONTENENTE I DATI!
+  private cvUrl = 'api/CVS'
+//   constructor(http: HttpClient ) {
+//     super(
+//       http,
+//       "api",
+//       "CVS",
+//       new CvSerializer()
+//     );
+//    }
+    constructor (private http : HttpClient , private messageService : MessageService) {}
   
   getCurriculums(): Observable<Cv[]>{     // LISTA CURRICULUM
     return this.http.get<Cv[]>(this.cvUrl).pipe(
@@ -56,7 +67,7 @@ export class CvService {
     if(!term.trim()){
       return of([]);
     }
-    return this.http.get<Cv[]>(`${this.cvUrl}/?contains${term}`).pipe(
+    return this.http.get<Cv[]>(`${this.cvUrl}/?nome=${term}`).pipe(
       tap(_=> this.log(`Trovati cv con nome = "${term}"`)),
       catchError(this.handleError<Cv[]> ('searchCv', []))
     );

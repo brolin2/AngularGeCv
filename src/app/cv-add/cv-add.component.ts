@@ -11,13 +11,15 @@ import { Router } from '@angular/router';
 })
 export class CvAddComponent implements OnInit {
   listCv : ListCvComponent;
-  constructor(  private cvService : CvService , private location : Location ,private router: Router) { }
+  
+  constructor( private cvService : CvService,  private location : Location ,private router: Router) { }
   cvss : Cv[];
   id= 3;
   add(nome: string , cognome : string , eta : number){
     nome= nome.trim();
     cognome=cognome.trim();
     var curr = { "nome": nome , "cognome": cognome , eta:eta };
+    //this.cvService.create(curr as Cv)
     this.cvService.addCv(curr as Cv)
     .subscribe(cv => {this.listCv.cvs.push(cv) ;});
     this.router.navigateByUrl(`/curriculum`);    //REINDERIZZA IN UN ALTRO COMPONENTE

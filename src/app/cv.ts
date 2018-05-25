@@ -1,9 +1,9 @@
 import { Esp } from './esp';
-export class Cv{
-    id:number;
+import { Gen } from './gen';
+
+export class Cv extends Gen{
     nome:string;
     cognome:string;
     eta:number;
-    residenza : string;
-    telefono : string;
+    
 }

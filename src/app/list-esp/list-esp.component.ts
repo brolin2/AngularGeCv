@@ -13,10 +13,10 @@ export class ListEspComponent implements OnInit {
 
   ngOnInit() {
     
-    this.getEspLavs();
+    // this.getEspLavs();
   }
-  getEspLavs() : void {
-    this.espService.getEspLavs().subscribe(esp => this.esp = esp);
-  }
+  // getEspLavs() : void {
+  //   this.espService.getEspLavs().subscribe(esp => this.esp = esp);
+  // }
 
 }

@@ -24,7 +24,8 @@ export class CurriculumComponent implements OnInit {
 
   getCurriculum():void{
     const id=+this.route.snapshot.paramMap.get('id');
-    this.cvService.getCurriculum(id).subscribe(cv=>this.cv = cv);
+    //this.cvService.read(3).subscribe(cv=>this.cv = cv);
+    this.cvService.getCurriculum(id).subscribe(cv => this.cv= cv)
   }
   save():void{
     this.cvService.updateCv(this.cv).subscribe(()=>this.goBack());
