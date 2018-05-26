@@ -11,7 +11,8 @@ export class InMemoryDataService implements InMemoryDbService{
             {id:5 ,nome:'Luca', cognome:'Salzone' , eta:33},
             {id:6 ,nome:'Edoardo', cognome:'Bevione' , eta:25},
             {id:7 ,nome:'Massimo', cognome:'Franzoso' , eta:19},
-            {id:8 ,nome:'Florin', cognome:'Gheliuc' , eta:23}
+            {id:8 ,nome:'Florin', cognome:'Gheliuc' , eta:23},
+            {id:9 ,nome:'Carmela', cognome:'Capoplaza' , eta:35}
         ];
         return {CVS};
         

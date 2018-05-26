@@ -31,10 +31,10 @@ export class ListCvComponent implements OnInit {
     this.cvService.getCurriculums().subscribe(cvs => this.cvs = cvs);
   }
   
-  // deleteCv(cv:Cv) :void{
-  //   this.cvs = this.cvs.filter(c=>c !=cv);
-  //   this.cvService.deleteCv(cv).subscribe();
-  // }
+  deleteCv(cv:Cv) :void{
+    this.cvs = this.cvs.filter(c=>c !=cv);
+    this.cvService.deleteCv(cv).subscribe();
+  }
 
   
 
