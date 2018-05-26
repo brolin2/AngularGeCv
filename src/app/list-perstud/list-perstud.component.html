@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let ps of pss">
+    <a routerLink="/perstud/{{ps.id}}">
+      <span class="badge">{{ps.id}}</span>
+      {{ps.qualifica}}
+    </a>
+  </li>
+</ul>
