@@ -6,12 +6,13 @@ import {CvService } from '../cv.service';
 @Component({
   selector: 'app-curriculum',
   templateUrl: './curriculum.component.html',
-  styleUrls: ['./curriculum.component.css']
+  styleUrls: ['./curriculum.component.css'],
+  providers: [CvService]
 })
 
 // QUI VANNO I METODI PER CURRICULUM
 export class CurriculumComponent implements OnInit {
-  @Input() cv : Cv ;
+  @Input() cv : Cv;
   constructor(
     private route: ActivatedRoute,
     private cvService : CvService,
@@ -23,12 +24,13 @@ export class CurriculumComponent implements OnInit {
   }
 
   getCurriculum():void{
-    //const id=+this.route.snapshot.paramMap.get('id');
-    this.cvService.read(3).subscribe(cv=>this.cv = cv);
+    const id=this.route.snapshot.paramMap.get('id');
+    //this.cvService.read(3).subscribe(cv=>this.cv = cv);
+    this.cvService.getCurriculum(id).subscribe(cv => this.cv= cv)
   }
-  // save():void{
-  //   this.cvService.updateCv(this.cv).subscribe(()=>this.goBack());
-  // }
+  save():void{
+    this.cvService.updateCv(this.cv).subscribe(()=>this.goBack());
+  }
   goBack(): void{
     this.location.back();
   }

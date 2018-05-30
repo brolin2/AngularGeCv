@@ -19,21 +19,23 @@ export class ListCvComponent implements OnInit {
     // UNA VOLTA AVVENUTA LA RICERCA! TRASFORMO CVS IN Observable...
   //cvs : Observable<Cv[]>;
   cvs : Cv[];
-  cvService: CvService ;
-  constructor() {}
+  // cvService: CvService ;
+  constructor(private cvService: CvService) {}
   
   ngOnInit() {
     //this.cvs= this.cvSearch.cvs$;
     this.getCurriculums();
   }
   getCurriculums(): void{
-    this.cvService.list().subscribe(cvs => this.cvs = cvs);
+    //this.cvService.list().subscribe(cvs => this.cvs = cvs);
+    //this.cvService.getCurriculums().subscribe(cvs => this.cvs = cvs);
+    this.cvService.getTest().subscribe(cvs => this.cvs = cvs);
   }
   
-  // deleteCv(cv:Cv) :void{
-  //   this.cvs = this.cvs.filter(c=>c !=cv);
-  //   this.cvService.deleteCv(cv).subscribe();
-  // }
+  deleteCv(cv:Cv) :void{
+    this.cvs = this.cvs.filter(c=>c !=cv);
+    this.cvService.deleteCv(cv).subscribe();
+  }
 
   
 

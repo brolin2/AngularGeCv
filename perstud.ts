@@ -1,7 +1,7 @@
-export class Esp {
+export class PerStud{
     Id:number;
     AnnoInizio:number;
     AnnoFine:number;
-    Qualifica:string;
+    Titolo:string;
     Descrizione:string;
-} 
+}

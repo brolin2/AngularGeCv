@@ -1,0 +1,7 @@
+<div id = "Comp-Detail" *ngIf="comp">
+  <label>Id: <input [(ngModel)] = "comp.Id" placeholder = "id competenza..."></label><br>
+  <label>Titolo: <input [(ngModel)] = "comp.Titolo" placeholder="titolo competenza..."></label> <br>
+  <label>Livello: <input [(ngModel)] = "comp.Livello" placeholder = "livello titolo..."></label> <br>
+  <button (click) = "save()">Save</button>
+  <button (click) = "goBack()">GO BACK</button>
+</div> 

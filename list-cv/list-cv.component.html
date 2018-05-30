@@ -6,11 +6,10 @@ _______________pazzo_______________
   ciao
   <li *ngFor="let cv of cvs">
     bau
-    <a routerLink="/detail/{{cv.id}}"> 
-      <span class="badge">{{cv.id}}</span>
-      {{cv.nome}}
+    <a routerLink="/detail/{{cv.Matricola}}"> 
+      <span class="badge">{{cv.Matricola}}</span>
+      {{cv.Nome}}
      </a> 
     <button class="delete"  title="delete hero" (click)="deleteCv(cv)" >X</button> <!-- DA FINIRE-->
   </li>
 </ul>
-<app-list-esp></app-list-esp>

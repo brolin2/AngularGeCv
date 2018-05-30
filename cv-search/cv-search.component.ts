@@ -17,8 +17,8 @@ export class CvSearchComponent implements OnInit {
   cvs$ : Observable<Cv[]>;
   private searchTerms = new Subject<string>();
   // cvss = Cv[];
-
-  constructor( private cvService: CvService , private router : Router , private listCv : ListCvComponent)  { }
+  
+  constructor( private cvService: CvService , private router : Router )  { }
   searchCognome(term:string): void{
     // this.searchTerms.next(term);
     // this.cvs$= this.cvService.searchCognome(term);
@@ -33,12 +33,12 @@ export class CvSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
   ngOnInit() : void {
-    // this.cvs$ = this.searchTerms.pipe(
-    //   debounceTime(300),      // delay di 0.3 s per la ricerca
-    //   distinctUntilChanged() ,  //Differenziali finchè cambiano
-    //   switchMap((term:string) => this.cvService.searchCv(term)),
+    this.cvs$ = this.searchTerms.pipe(
+      debounceTime(300),      // delay di 0.3 s per la ricerca
+      distinctUntilChanged() ,  //Differenziali finchè cambiano
+      switchMap((term:string) => this.cvService.searchCv(term)),
       
-    // );
+    );
     //this.cvs$= this.cvService.searchCv(this.searchTerms);
   }
 

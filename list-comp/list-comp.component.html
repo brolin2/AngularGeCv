@@ -1,0 +1,8 @@
+<ul class="comp-list" *ngIf = "comps">
+  <li *ngFor = "let comp of comps">
+    <a routerLink="/comp/{{comp.Id}}">
+      <span class="badge">{{comp.Id}}</span>
+      {{comp.Titolo}}
+    </a>
+  </li>
+</ul>
