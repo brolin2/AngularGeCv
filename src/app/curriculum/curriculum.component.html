@@ -1,9 +1,19 @@
-<div id="CV_container">
-  <label>NOME: <input [(ngModel)]="cv.nome" placeholder="nome..."></label>
+<div id="CV_container" *ngIf="cv">
+  <label>Matricola : <input [(ngModel)]="cv.Matricola" placeholder="matricola..."> </label>
+  <label>NOME: <input [(ngModel)]="cv.Nome" placeholder="nome..."></label>
   <br>
-  <label>COGNOME: <input [(ngModel)]="cv.cognome" placeholder="cognome..."> </label>
+  <label>COGNOME: <input [(ngModel)]="cv.Cognome" placeholder="cognome..."> </label>
   <br>
-  <label>ETA: <input [(ngModel)]="cv.eta" placeholder="eta..."> </label>
+  <label>ETA: <input [(ngModel)]="cv.Eta" placeholder="eta..."> </label>
+  <label>Telefono: <input [(ngModel)]="cv.Telefono" placeholder="telefono..."> </label>
+  <label>Residenza : <input [(ngModel)]="cv.Residenza" placeholder="residenza..." > </label>
+  <label>Email: <input [(ngModel)]="cv.Email" placeholder="email..." >  </label>
   <button (click)="save()">SALVA</button>
   <button (click)="goBack()">GO BACK</button>
 </div>
+<app-list-esp></app-list-esp>
+<app-esp-add></app-esp-add>
+
+<br>
+<app-list-perstud></app-list-perstud>
+<app-list-comp></app-list-comp>

@@ -1,6 +1,7 @@
 export class PerStud{
-    id:number;
-    idCv:number;
-    qualifica:string;
-    descrizione:string;
+    Id:number;
+    AnnoInizio:number;
+    AnnoFine:number;
+    Titolo:string;
+    Descrizione:string;
 }

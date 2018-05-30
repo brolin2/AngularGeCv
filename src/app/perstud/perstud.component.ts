@@ -25,4 +25,15 @@ export class PerstudComponent implements OnInit {
     const id=+this.route.snapshot.paramMap.get('id');
     this.perstudService.getPerStud(id).subscribe(perstud => this.perstud= perstud);
   }
+  deletePerStud() : void{
+    const id=+this.route.snapshot.paramMap.get('id');
+    this.perstudService.deletePerStud(id).subscribe();
+  }
+  save(): void{
+    const id=this.route.snapshot.paramMap.get('id');
+    this.perstudService.updatePerStud(this.perstud ,id ).subscribe( () =>this.goBack());
+  }
+  goBack() : void {
+    this.location.back();
+  }
 }

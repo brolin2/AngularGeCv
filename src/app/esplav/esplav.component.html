@@ -1,13 +1,21 @@
-<div>
-  <label>
-    Titolo: {{esp.titolo}}
+<div *ngIf="esp">
+  <label> QUALIFICA:
+    <input [(ngModel)]="esp.Qualifica" placeholder="qualifica..."/>
   </label>
   <br>
-  <label>
-    Descrizione : {{esp.descrizione}}
+  <label> DESCRIZIONE:
+   <input [(ngModel)]="esp.Descrizione" placeholder="descrizione.."/>
   </label>
   <br>
-  <label>
-    Curriculum relazionato : {{esp.idCv}}
+  <label>ANNO INIZIO:
+    <input [(ngModel)]="esp.AnnoInizio" placeholder="Anno Inizio..."/>
   </label>
+  <br>
+  <label> ANNO FINE : 
+    <input [(ngModel)]="esp.AnnoFine" placeholder="Anno Fine..."/>
+  </label>
+  <br>
+  <button *ngIf="test" (click)="goBack()" id="btn-back-esp" >Go Back</button>
+  <button (click)="save()">SAVE </button>
+  <button class="btn-danger" (click)="delete()">DELETE</button>
 </div>

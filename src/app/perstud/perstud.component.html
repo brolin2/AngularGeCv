@@ -1,13 +1,19 @@
-<div>
-  <label>
-    Qualifica: {{perstud.qualifica}}
+<div *ngIf="perstud">
+  <label>Qualifica:
+    <input [(ngModel)]="perstud.Titolo"/>
   </label>
   <br>
-  <label>
-    Descrizione: {{perstud.descrizione}}
+  <label>Descrizione: 
+    <input [(ngModel)]="perstud.Descrizione"/>
   </label>
   <br>
-  <label>
-    Curriculum Realzionato : {{perstud.idCv}}
+  <label>Anno Inizio:
+    <input [(ngModel)]="perstud.AnnoInizio"/>
   </label>
+  <label>Anno Fine: 
+    <input [(ngModel)]="perstud.AnnoFine" />
+  </label>
+  <button (click)="save()">SAVE</button>
+  <button class="btn btn-danger" (click)="deletePerStud()">DELETE</button>
+  <button (click)="goBack()">GO BACK</button>
 </div>

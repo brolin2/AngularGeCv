@@ -2,8 +2,13 @@ import { Esp } from './esp';
 import { Gen } from './gen';
 
 export class Cv extends Gen{
-    nome:string;
-    cognome:string;
-    eta:number;
+    Matricola: string ;
+    Nome: string;
+    Cognome:string;
+    Eta:number;
+    Email:string;
+    Residenza:string;
+    Telefono: string;
+
     
 }

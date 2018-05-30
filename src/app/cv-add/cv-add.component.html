@@ -2,8 +2,13 @@
 <div>
   <label>NOME : <input #nomeCv/> </label>
   <label>COGNOME: <input #cognomeCv /> </label>
+  <br>
   <label>Eta <input #etaCv  type="number"/> </label>
-  <button (click)="add(nomeCv.value , cognomeCv.value , etaCv.value)"   > ADD</button>
+  <label>Telefono <input #telCv /> </label>
+  <br>
+  <label>Email <input #emailCV /> </label>
+  <label>Residenza <input #resiCv /> </label>
+  <button (click)="add(nomeCv.value , cognomeCv.value , etaCv.value , telCv.value , emailCV.value , resiCv.value)"   > ADD</button>
   
 </div>
 

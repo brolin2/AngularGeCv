@@ -1,6 +1,7 @@
 export class Esp {
-    id:number;
-    idCv:number;
-    titolo:string;
-    descrizione:string;
+    Id:number;
+    AnnoInizio:number;
+    AnnoFine:number;
+    Qualifica:string;
+    Descrizione:string;
 } 

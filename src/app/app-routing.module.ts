@@ -10,7 +10,7 @@ import { ListEspComponent } from './list-esp/list-esp.component';
 import { EsplavComponent } from './esplav/esplav.component';
 import {PerstudComponent } from './perstud/perstud.component';
 import { ListPerstudComponent } from './list-perstud/list-perstud.component';
-
+import { CompComponent } from './comp/comp.component';
 const routes: Routes= [
   {path:'detail/:id', component:CurriculumComponent },
   {path: 'curriculum' , component: ListCvComponent},
@@ -19,8 +19,8 @@ const routes: Routes= [
   {path: 'lista' , component: ListEspComponent },
   {path: 'esplav/:id' , component : EsplavComponent},
   {path: 'perstud/:id' , component : PerstudComponent},
-  {path: 'list-per' , component: ListPerstudComponent }
-
+  {path: 'list-per' , component: ListPerstudComponent },
+  {path: 'comp/:id' , component: CompComponent}
 ];
 
 @NgModule({
