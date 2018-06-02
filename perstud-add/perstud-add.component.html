@@ -1,0 +1,21 @@
+<h3>Aggiungi Percorso Studi</h3>
+<div>
+    <label>Titolo:
+        <input #titP  placeholder="titolo..."/>
+      </label>
+      <br>
+      <label>Descrizione: 
+        <input #desP  placeholder="descrizione..." />
+      </label>
+      <br>
+      <label>Anno Inizio:
+        <input #AIP type="number" placeholder="Anno Inizio..." />
+      </label>
+      <br>
+      <label>Anno Fine: 
+        <input #AFP type="number" placeholder="Anno Fine..." />
+      </label>
+      <br>
+      <button class="btn-success" (click)="add(AIP.value , AFP.value , titP.value ,desP.value)">AGGIUNGI</button>
+      <button (click)="goBack()">GO BACK</button>
+</div>

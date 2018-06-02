@@ -1,5 +1,5 @@
 export class Comp{
-    id : number;
+    Id : number;
     
     Titolo : string;
     Livello : number;

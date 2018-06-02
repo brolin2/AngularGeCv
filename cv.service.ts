@@ -8,6 +8,8 @@ import { MessageService } from './message.service';
 import { Esp } from './esp';
 import { GenService } from './gen.service';
 import { CvSerializer } from './cv-serializer';
+import { getRandomString } from 'selenium-webdriver/safari';
+
 //import { Response } from '@angular/http';
 const httpOptions = {
   headers: new HttpHeaders ( { 'Content-Type' : 'application/json'  , 'Access-Control-Allow-Origin' : '*',
@@ -99,29 +101,42 @@ private _headers = new HttpHeaders().set('Content-Type' , 'application/json' );
     if(!term.trim()){
       return of([]);
     }
-    return this.http.get<Cv[]>(`${this.cvUrl}/?nome=${term}`).pipe(
+    return this.http.get<Cv[]>(`http://localhost:54424/api/CercaChiava/${term}`).pipe(
       tap(_=> this.log(`Trovati cv con nome = "${term}"`)),
       catchError(this.handleError<Cv[]> ('searchCv', []))
     );
   }
-  searchCognome(cognome: string ): Observable<Cv[]> {
+   searchCognome(cognome: string ): Observable<Cv[]> {
     if(!cognome.trim()){
       return of ([]);
     }
-    return this.http.get<Cv[]>(`${this.cvUrl}?cognome=${cognome}`).pipe(
+    return this.http.get<Cv[]>(`http://localhost:54424/api/CercaCognome/${cognome}`).pipe(
       tap(_=> this.log(`Trovati cv Con cognome : ${cognome}`)),
       catchError(this.handleError<Cv[]>('searchCognome' ,[]))
     );
   }
 
   addCv(cv : Cv) : Observable<Cv> {
+    
     return this.http.post<Cv>('http://localhost:54424/api/CV/AddCv', cv ).pipe(
       tap((cv:Cv) => this.log(`aggiunto Curriculum con id : `)),
       catchError(this.handleError<Cv>('AddCv'))
     );
   }
 
-  
+  searchEta(eta: number) : Observable<Cv[]>{
+    return this.http.get<Cv[]>('http://localhost:54424/api/CercaEta/'+eta.toString()).pipe(
+      tap(_=> this.log("Curriculum trovati con eta "+eta.toString())),
+      catchError(this.handleError('Errore search ETA ' , []))
+    );
+  }
+
+  searchMinMax(etaMin: number, etaMax : number) : Observable<Cv[]>{
+    return this.http.get<Cv[]>('http://localhost:54424/api/CercaMinMax/'+etaMin.toString()+ '/'+ etaMax.toString()).pipe(
+      tap(_ => this.log("Curriculum trovati nel range "+etaMin.toString()+"-"+etaMax.toString() )),
+      catchError(this.handleError("errore Search Range Eta" , []))
+    );
+  }
 
   private log(message:string){
 		this.messageService.add('Servizio Curriculum : '+message);

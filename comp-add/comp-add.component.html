@@ -1,0 +1,7 @@
+<h3>Aggiungi Competenza</h3>
+<div id = "Comp-Detail" >
+    <label>Titolo: <input #titC  placeholder="titolo competenza..."></label> <br>
+    <label>Livello: <input #lvlC type="number" placeholder = "livello titolo..."></label> <br>
+    <button class="btn-success" (click)="add(titC.value, lvlC.value)">AGGIUNGI Comp</button>
+    <button (click) = "goBack()">GO BACK</button>
+  </div> 

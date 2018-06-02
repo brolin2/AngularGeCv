@@ -15,8 +15,8 @@ const httpOptions = {
 })
 export class EspService {
   
-  getEsp(id:number ): Observable<Esp> {
-   return this.http.get<Esp>(`http://localhost:54424/api/EspLav/` + id.toString()).pipe(
+  getEsp(id:string , idcv :string ): Observable<Esp> {
+   return this.http.get<Esp>(`http://localhost:54424/api/CV/`+idcv+`/EspLav/`+id).pipe(
      tap(_=> this.log(`Presa Esp Lav id=` + id.toString())),
      catchError(this.handleError<Esp>(`GetEspLAv` , ))
    );
@@ -35,8 +35,8 @@ export class EspService {
     );
   }
 
-  deleteEsp(id:number) : Observable<any>{
-    return this.http.delete<Esp>('http://localhost:54424/api/EspLav/Del/' + id.toString()).pipe(
+  deleteEsp(id:string , idcv: string) : Observable<any>{
+    return this.http.delete<Esp>('http://localhost:54424/api/CV/'+idcv+'/EspLav/Del/' + id.toString()).pipe(
       tap(_ => this.log('Eliminata Esp Lav Con id = ' + id.toString())),
       catchError(this.handleError('Errore nel delete ESPLAV'))
     );
@@ -50,7 +50,7 @@ export class EspService {
   }
 
 
-  updateEsp(esp: Esp ) :  Observable<any>{
+  updateEsp(esp: Esp , idcv: string) :  Observable<any>{
     var body = {
       Id: esp.Id,
       AnnoInizio: esp.AnnoInizio,
@@ -58,7 +58,7 @@ export class EspService {
       Qualifica: esp.Qualifica,
       Descrizione: esp.Descrizione
     }
-    return this.http.post('http://localhost:54424/api/Esplav/Put/'+esp.Id.toString() , body ).pipe(
+    return this.http.post('http://localhost:54424/api/CV/'+idcv+'/Esplav/Put/'+esp.Id.toString() , body ).pipe(
       tap(_ => this.log("Aggiornata esp lav ")),
       catchError(this.handleError<Esp>('Modifica esplAv'))
     );

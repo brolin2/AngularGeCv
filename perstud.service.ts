@@ -12,9 +12,9 @@ export class PerstudService {
 
   constructor(private http :HttpClient , private messageService : MessageService) { }
 
-  getPerStud(id:number ) : Observable<PerStud>{
-    return this.http.get<PerStud>('http://localhost:54424/api/PerStud/'+ id.toString()).pipe(
-      tap(_=> this.log('Preso PerStud id = ' + id.toString())),
+  getPerStud(idp:string, idcv: string  ) : Observable<PerStud>{
+    return this.http.get<PerStud>('http://localhost:54424/api/CV/'+idcv+'/PerStud/'+ idp).pipe(
+      tap(_=> this.log('Preso PerStud id = ' + idp)),
       catchError(this.handleError("ERRORE GET BY ID PER STUD"))
     );
   }
@@ -25,7 +25,7 @@ export class PerstudService {
     );
   }
 
-  updatePerStud(perstud: PerStud , id: string) : Observable<any> {
+  updatePerStud(perstud: PerStud , idcv: string) : Observable<any> {
     var body = {
       Id : perstud.Id,
       AnnoInizio: perstud.AnnoInizio,
@@ -33,21 +33,21 @@ export class PerstudService {
       Titolo: perstud.Titolo,
       Descrizione: perstud.Descrizione
     }
-    return this.http.put<PerStud>('http://localhost:54424/api/PerStud/Put/'+id, body   ).pipe(
+    return this.http.put<PerStud>('http://localhost:54424/api/CV/'+idcv+'/PerStud/Put/'+body.Id.toString(), body   ).pipe(
       tap(_=> this.log("Modificato PErcorso Studi")),
       catchError(this.handleError("ERRORE PERSTUD UPDATE"))
     );
   }
-  deletePerStud(id : number): Observable<any>{
-    return this.http.delete('http://localhost:54424/api/PerStud/Del/'+id.toString()).pipe(
-      tap(_=> this.log("Cancellato Per Stud id : " +id.toString())),
+  deletePerStud(idp : string , idcv: string ): Observable<any>{
+    return this.http.delete('http://localhost:54424/api/CV/'+idcv+'/PerStud/Del/'+idp).pipe(
+      tap(_=> this.log("Cancellato Per Stud id : " +idp)),
       catchError(this.handleError('ERRORE DELETE PERSTUD'))
     );
   }
 
-  addPerStud(perstud: PerStud , id:string ) : Observable<PerStud>{
-    return this.http.post<PerStud>('http://localhost:54424/api/CV/'+id+'/Add/PerStud' , perstud).pipe(
-      tap(_ => this.log("AGGIUTO PERCORSO STUDI al CV : " + id)),
+  addPerStud(perstud: PerStud , idcv:string ) : Observable<PerStud>{
+    return this.http.post<PerStud>('http://localhost:54424/api/CV/'+idcv+'/PerStud/Add' , perstud).pipe(
+      tap(_ => this.log("AGGIUTO PERCORSO STUDI al CV : " + idcv)),
       catchError(this.handleError("Errore ADD PErStudi "))
     );
   } 

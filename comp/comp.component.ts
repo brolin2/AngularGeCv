@@ -19,16 +19,27 @@ export class CompComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.init();
     this.getComp();
   }
+  idcv:string;
+  idc:string;
+  init() : void {
+    const idd = this.route.snapshot.paramMap.get('id');
+    const ids=this.route.snapshot.paramMap.get("idcv");
+    this.idcv = ids;
+    this.idc = idd;
+  }
   getComp() : void {
-    const id =+ this.route.snapshot.paramMap.get('id');
-    this.compService.getComp(id).subscribe(comp => this.comp = comp);
+    this.compService.getComp(this.idc , this.idcv).subscribe(comp => this.comp = comp);
   }
   save() : void {
-    const id =+ this.route.snapshot.paramMap.get('id');
-    this.compService.updateComp(id , this.comp).subscribe(() => this.goBack());
+    this.compService.updateComp(this.idc , this.comp).subscribe(() => this.goBack());
   }
+  delete() : void {
+    this.compService.deleteComp(this.idc , this.idcv).subscribe(() => this.goBack());
+  }
+
 
   goBack() : void {
     this.location.back();

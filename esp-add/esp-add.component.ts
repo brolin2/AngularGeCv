@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EspService } from '../esp.service';
 import { ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-esp-add',
   templateUrl: './esp-add.component.html',
@@ -8,9 +9,10 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class EspAddComponent implements OnInit {
 
-  constructor(private espService : EspService , private route : ActivatedRoute ) { }
+  constructor(private espService : EspService , private route : ActivatedRoute , private location : Location ) { }
 
   ngOnInit() {
+
   }
   addEsp(qualifica : string , descrizione : string , AI : number , AF:number ): void {
     var esp = {
@@ -21,6 +23,9 @@ export class EspAddComponent implements OnInit {
       Descrizione : descrizione
     }
     const id=this.route.snapshot.paramMap.get('id');
-    this.espService.addEsp(esp , id).subscribe();
+    this.espService.addEsp(esp , id).subscribe(()=> this.location.back());
+  }
+  goBack() : void {
+    this.location.back();
   }
 }

@@ -22,6 +22,8 @@ import { PerstudComponent } from './perstud/perstud.component';
 import { ListPerstudComponent } from './list-perstud/list-perstud.component';
 import { CompComponent } from './comp/comp.component';
 import { ListCompComponent } from './list-comp/list-comp.component';
+import { PerstudAddComponent } from './perstud-add/perstud-add.component';
+import { CompAddComponent } from './comp-add/comp-add.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -46,7 +48,9 @@ import { ListCompComponent } from './list-comp/list-comp.component';
     PerstudComponent,
     ListPerstudComponent,
     CompComponent,
-    ListCompComponent
+    ListCompComponent,
+    PerstudAddComponent,
+    CompAddComponent
   ],
   providers: [
     CvService

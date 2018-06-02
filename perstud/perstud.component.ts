@@ -18,20 +18,31 @@ export class PerstudComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.init();
     this.getPerStud();
+  }
+  idcv:string;
+  idp:string;
+  init() : void {
+    const idd = this.route.snapshot.paramMap.get('id');
+    const ids=this.route.snapshot.paramMap.get("idcv");
+    this.idcv = ids;
+    this.idp = idd;
   }
 
   getPerStud() : void {
-    const id=+this.route.snapshot.paramMap.get('id');
-    this.perstudService.getPerStud(id).subscribe(perstud => this.perstud= perstud);
+   
+    this.perstudService.getPerStud(this.idp , this.idcv).subscribe(perstud => this.perstud= perstud);
   }
   deletePerStud() : void{
-    const id=+this.route.snapshot.paramMap.get('id');
-    this.perstudService.deletePerStud(id).subscribe();
+    
+    this.perstudService.deletePerStud(this.idp, this.idcv).subscribe(() => this.goBack());
+
   }
   save(): void{
-    const id=this.route.snapshot.paramMap.get('id');
-    this.perstudService.updatePerStud(this.perstud ,id ).subscribe( () =>this.goBack());
+   
+    this.perstudService.updatePerStud(this.perstud ,this.idcv ).subscribe( () =>this.goBack());
+
   }
   goBack() : void {
     this.location.back();

@@ -1,21 +1,23 @@
+<h3>Dettaglio Esperienza Lavorativa</h3>
 <div *ngIf="esp">
   <label> QUALIFICA:
-    <input [(ngModel)]="esp.Qualifica" placeholder="qualifica..."/>
+    <input #QuaE [(ngModel)]="esp.Qualifica" placeholder="qualifica..."/>
   </label>
   <br>
   <label> DESCRIZIONE:
-   <input [(ngModel)]="esp.Descrizione" placeholder="descrizione.."/>
+   <input #DesE [(ngModel)]="esp.Descrizione" placeholder="descrizione.."/>
   </label>
+  
   <br>
   <label>ANNO INIZIO:
-    <input [(ngModel)]="esp.AnnoInizio" placeholder="Anno Inizio..."/>
+    <input #AIE [(ngModel)]="esp.AnnoInizio" placeholder="Anno Inizio..."/>
   </label>
   <br>
   <label> ANNO FINE : 
-    <input [(ngModel)]="esp.AnnoFine" placeholder="Anno Fine..."/>
+    <input #AFE [(ngModel)]="esp.AnnoFine" placeholder="Anno Fine..."/>
   </label>
   <br>
-  <button *ngIf="test" (click)="goBack()" id="btn-back-esp" >Go Back</button>
-  <button (click)="save()">SAVE </button>
-  <button class="btn-danger" (click)="delete()">DELETE</button>
+  <button *ngIf="btn_save" class="btn-warning" (click)="save()">SAVE </button>
+  <button *ngIf="btn_delete"  class="btn-danger" (click)="delete()">DELETE</button>
+  <button *ngIf="btn_back" (click)="goBack()" id="btn-back-esp" >Go Back</button>
 </div>

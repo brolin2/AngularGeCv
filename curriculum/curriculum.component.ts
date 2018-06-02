@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Cv } from '../cv';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute } from '@angular/router';
 import {Location } from '@angular/common';
 import {CvService } from '../cv.service';
 @Component({
@@ -16,9 +16,9 @@ export class CurriculumComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cvService : CvService,
-    private location : Location
+    private location : Location,
   ) { }
-
+  name : string;
   ngOnInit() {
     this.getCurriculum();
   }
@@ -26,10 +26,14 @@ export class CurriculumComponent implements OnInit {
   getCurriculum():void{
     const id=this.route.snapshot.paramMap.get('id');
     //this.cvService.read(3).subscribe(cv=>this.cv = cv);
-    this.cvService.getCurriculum(id).subscribe(cv => this.cv= cv)
+    this.cvService.getCurriculum(id).subscribe(
+      cv => this.cv= cv,
+      (err) => this.name="ERRORE",
+      () => this.name= this.cv.Nome
+    );
   }
   save():void{
-    this.cvService.updateCv(this.cv).subscribe(()=>this.goBack());
+    this.cvService.updateCv(this.cv).subscribe();
   }
   goBack(): void{
     this.location.back();

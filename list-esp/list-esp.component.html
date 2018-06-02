@@ -1,7 +1,13 @@
-<ul class="curriculum-list1">
+<br>
+<div >
+  <h3 >Esperienze Lavorative</h3>
+  <a  routerLink="./esp-add"><button>ADD ESP LAV</button> </a>  
+</div>
+<ul class="curriculum-list">
+
     <li *ngFor="let es of esp">
       
-       <a routerLink="/esplav/{{es.Id}}">  
+       <a routerLink="./esplav/{{es.Id}}">  
         <span class="badge">{{es.Id}}</span>
         {{es.Qualifica}}
        </a> 

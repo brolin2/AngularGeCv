@@ -3,7 +3,7 @@ import { Cv } from '../cv';
 import { CvService } from '../cv.service';
 import {CvSearchComponent} from '../cv-search/cv-search.component';
 import { Observable } from 'rxjs';
-
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-list-cv',
   templateUrl: './list-cv.component.html',
@@ -20,11 +20,11 @@ export class ListCvComponent implements OnInit {
   //cvs : Observable<Cv[]>;
   cvs : Cv[];
   // cvService: CvService ;
-  constructor(private cvService: CvService) {}
+  constructor(private cvService: CvService , private cvSearch : CvSearchComponent , private app : AppComponent) {}
   
   ngOnInit() {
-    //this.cvs= this.cvSearch.cvs$;
-    this.getCurriculums();
+    //this.cvs= this.cvSearch.cvss;
+    //this.getCurriculums();
   }
   getCurriculums(): void{
     //this.cvService.list().subscribe(cvs => this.cvs = cvs);

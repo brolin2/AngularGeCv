@@ -3,6 +3,7 @@ import { Esp } from '../esp';
 import { Location } from '@angular/common';
 import { ActivatedRoute} from '@angular/router';
 import { EspService } from '../esp.service';
+import { isNumber } from 'util';
 @Component({
   selector: 'app-esplav',
   templateUrl: './esplav.component.html',
@@ -11,30 +12,60 @@ import { EspService } from '../esp.service';
 export class EsplavComponent implements OnInit {
   @Input() esp : Esp;
 
-  test : boolean;
+  btn_save = true;
+  btn_back = true;
+  btn_delete = true;
+  bottone =false;
 
   constructor( private location : Location  , private route : ActivatedRoute , private espService: EspService) { }
 
   ngOnInit() {
+    // const id=+this.route.snapshot.paramMap.get('id');
+    // if(isNumber(id)){
+    //   this.btn_back=true;
+    //   this.btn_delete=true;
+    //   this.btn_save=true;
+    //   this.bottone=true;
+    //   this.getEsp();
+    // }else{
+    //   this.btn_delete=false;
+    //   this.bottone=true;
+    //   this.btn_save=false; 
+    //   this.btn_back=true;
+    // }
+    this.init();
     this.getEsp();
-    this.test= false;
+  }
+  idcv:string;
+  ide:string;
+  init() : void {
+    const idd = this.route.snapshot.paramMap.get('id');
+    const ids=this.route.snapshot.paramMap.get("idcv");
+    this.idcv = ids;
+    this.ide = idd;
   }
   getEsp() : void{
-    const id=+this.route.snapshot.paramMap.get('id');
-    this.espService.getEsp(id).subscribe(esp => this.esp = esp);
+    
+    this.espService.getEsp(this.ide ,this.idcv ).subscribe(esp => this.esp = esp);
   }
   goBack() :void {
     this.location.back();
   }
   save() : void {
-    this.espService.updateEsp(this.esp).subscribe(); // ()=>this.goBack());
-    this.test= true;
+    this.espService.updateEsp(this.esp , this.idcv).subscribe(() => this.goBack()); // ()=>this.goBack());
   }
   delete() : void {
     const id=+this.route.snapshot.paramMap.get('id');
-    this.espService.deleteEsp(id).subscribe(() => this.goBack());
+    this.espService.deleteEsp(this.ide , this.idcv).subscribe(() => this.goBack());
   }
-  hide() : void {
-    //
+  add(AI :number , AF : number , qualifica: string , descr : string){
+    var esp = {
+      AnnoInizio: AI , 
+      AnnoFine : AF ,
+      Qualifica: qualifica,
+      Descrizione : descr,
+      Id : 666
+    }
+    this.espService.addEsp(this.esp ,this.idcv ).subscribe(()=> this.goBack());
   }
 }

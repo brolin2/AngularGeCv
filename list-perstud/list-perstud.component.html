@@ -1,6 +1,11 @@
-<ul>
+<div>
+  <h2>Percorsi Studi</h2>
+  <a  routerLink="./perstud-add"><button>ADD Per Stud</button> </a> 
+</div>
+
+<ul class="curriculum-list">
   <li *ngFor="let ps of pss">
-    <a routerLink="/perstud/{{ps.Id}}">
+    <a routerLink="./perstud/{{ps.Id}}">
       <span class="badge">{{ps.Id}}</span>
       {{ps.Titolo}}
     </a>

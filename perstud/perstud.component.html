@@ -1,3 +1,4 @@
+<h3>Dettaglio Percorso Studi</h3>
 <div *ngIf="perstud">
   <label>Qualifica:
     <input [(ngModel)]="perstud.Titolo"/>
@@ -8,12 +9,14 @@
   </label>
   <br>
   <label>Anno Inizio:
-    <input [(ngModel)]="perstud.AnnoInizio"/>
+    <input type="number" [(ngModel)]="perstud.AnnoInizio"/>
   </label>
+  <br>
   <label>Anno Fine: 
-    <input [(ngModel)]="perstud.AnnoFine" />
+    <input type="number" [(ngModel)]="perstud.AnnoFine" />
   </label>
-  <button (click)="save()">SAVE</button>
-  <button class="btn btn-danger" (click)="deletePerStud()">DELETE</button>
+  <br>
+  <button class="btn-warning" (click)="save()">SAVE</button>
+  <button class="btn-danger" (click)="deletePerStud()">DELETE</button>
   <button (click)="goBack()">GO BACK</button>
 </div>

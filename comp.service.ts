@@ -12,10 +12,11 @@ export class CompService {
 
   constructor(  private messageService : MessageService , private http : HttpClient) { }
 
-  getComp(id:number) : Observable<Comp>{
-    return this.http.get<Comp>('http://localhost:54424/api/Competenza/'+ id.toString()).pipe(
-      tap(_=> this.log("Presa Competenza id : " +id.toString())),
-      catchError(this.handleError("ERRORE GET COMPETENZA"))
+  getComp(idc:string , idcv : string  ) : Observable<Comp>{
+    return this.http.get<Comp>('http://localhost:54424/api/CV/'+idcv+'/Competenza/'+ idc).pipe(
+      tap(_=> this.log("Presa Competenza id : " +idc)),
+      catchError(this.handleError("ERRORE GET COMPETENZA")),
+      
     );
   }
   getListComp(id: string ) : Observable<Comp[]>{
@@ -24,21 +25,21 @@ export class CompService {
       catchError(this.handleError("ERRORE GET LIST "))
     );
   }
-  updateComp(id:number , comp :  Comp) : Observable<any>{
-    return this.http.put<Comp>('http://localhost:54424/api/Competenza/Put/'+id , comp).pipe(
-      tap(_ => this.log("UPDATE COMP ID = " + id.toString())),
+  updateComp(idcv:string , comp :  Comp) : Observable<any>{
+    return this.http.put<Comp>('http://localhost:54424/api/CV/'+idcv+'/Competenza/Put/'+comp.Id.toString() , comp).pipe(
+      tap(_ => this.log("UPDATE COMP ID = " + comp.Id.toString())),
       catchError(this.handleError("ERRORE UPDATE"))
     );
   }
-  deleteComp(id:number): Observable<any> {
-    return this.http.delete<Comp>('http://localhost:54424/api/Competenza/Del/'+ id ).pipe(
-      tap(_=> this.log("ELIMINATA COMP ID: " +id.toString())),
+  deleteComp(idc:string , idcv : string): Observable<any> {
+    return this.http.delete<Comp>('http://localhost:54424/api/CV/'+idcv+'/Competenza/Del/'+ idc ).pipe(
+      tap(_=> this.log("ELIMINATA COMP ID: " +idc)),
       catchError(this.handleError('ERRORE DELETE COMP '))
     );
   }
 
   addComp(comp:Comp , id: string) : Observable<Comp>{
-    return this.http.post<Comp>('http://localhost:54424/api/CV/'+id+'/Add/Competenza' , comp).pipe(
+    return this.http.post<Comp>('http://localhost:54424/api/CV/'+id+'/Competenza/Add' , comp).pipe(
       tap(_=> this.log("AGGIUNTA COMP AL CV :" +id)),
       catchError(this.handleError("ERRORE ADD COMP "))
     );

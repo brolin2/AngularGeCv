@@ -1,3 +1,5 @@
+
+<h3>Aggiungi Esperienza Lavorativa</h3>
 <div>
     <label> QUALIFICA:
         <input #quaE placeholder="qualifica..."/>
@@ -16,4 +18,5 @@
     </label>
     <br>
     <button class="btn-success" (click)="addEsp(quaE.value , desE.value , AIE.value , AFE.value)">AGGIUNGI</button>
+    <button (click) = "goBack()">GO BACK</button>
 </div>
