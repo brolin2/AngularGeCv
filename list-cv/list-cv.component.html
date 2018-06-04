@@ -1,28 +1,9 @@
 
-
-<h2>I MIEI CURRICULUM</h2>
-_______________pazzo_______________
-<ul class="curriculum-list" *ngIf="cvs">
-  ciao
-  <li *ngFor="let cv of cvs">
-    bau
-    <a routerLink="/detail/{{cv.Matricola}}"> 
-      <span class="badge">{{cv.Matricola}}</span>
-      {{cv.Nome}}
-     </a> 
-    <button class="delete"  title="delete hero" (click)="deleteCv(cv)" >X</button> <!-- DA FINIRE-->
-  </li>
-</ul>
-<h1>TEST</h1>
-<!-- TEST -->
 <ul class="curriculum-list">
-    ciao
     <li *ngFor="let cv of app.cvsa">
-      bau
       <a routerLink="/detail/{{cv.Matricola}}"> 
         <span class="badge">{{cv.Matricola}}</span>
         {{cv.Nome}}
        </a> 
-      <button class="delete"  title="delete hero" (click)="deleteCv(cv)" >X</button> <!-- DA FINIRE-->
     </li>
   </ul>

@@ -35,6 +35,16 @@ export class CurriculumComponent implements OnInit {
   save():void{
     this.cvService.updateCv(this.cv).subscribe();
   }
+
+  delete(): void{
+    const mat = this.cv.Matricola;
+    this.cvService.deleteCv(mat).subscribe(
+      () => this.name = "Curriculum cancellato",
+      (err) => this.name="Errore",
+      () => this.goBack()
+    )
+  }
+
   goBack(): void{
     this.location.back();
   }

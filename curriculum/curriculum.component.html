@@ -1,7 +1,6 @@
 <h3>Curriculum di {{name}}</h3>
 
 <div id="CV_container" *ngIf="cv">
-  <!-- <label>Matricola : <input [(ngModel)]="cv.Matricola" placeholder="matricola..."> </label> -->
   <div class="row">
     <div class="col-md-1">
       <label>NOME: </label>
@@ -45,6 +44,7 @@
     </div>
   </div>
   <button class="btn-warning" (click)="save()">SALVA</button>
+  <button class="btn-danger" (click)="delete()">DELETE</button>
 </div>
 <app-list-esp></app-list-esp>
 
